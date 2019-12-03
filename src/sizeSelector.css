@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap");
+
+.size_selector {
+  font-family: "Nunito Sans";
+  font-size: 12px;
+  margin-top: 20px;
+  margin-left:30px;
+}
+label {
+  user-select: none;
+}
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label {
+  z-index: 10;
+  margin: 0 1px 0 0;
+  position: relative;
+  color: #4a274a;
+  background-color: #c3c6c5;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+input[type="radio"]:checked + label {
+  color: #4a274a;
+  background-color: #bc98cb;
+}
+
+input[type="radio"] + label {
+  padding: 5px 20px;
+}

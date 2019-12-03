@@ -1,0 +1,53 @@
+.image_upload_option {
+  display: table-cell;
+  margin: 20px 0px 0px 20px;
+  width: 230px;
+  height: 200px;
+  border: 1px solid #696a6c;
+  border-radius: 10px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.main_image_uploader {
+  margin: 30px 0 0 30px;
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+.custom-file-input::before {
+  content: "Upload";
+  color: grey;
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #999;
+  border-radius: 3px;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 700;
+  font-size: 10pt;
+}
+.custom-file-input:hover::before {
+  border-color: grey;
+}
+.custom-file-input:active::before {
+  background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+}
+
+.image_upload_option {
+  position: relative;
+}
+.close {
+  position: absolute;
+  width: 10px;
+  margin: 10px 0 0 0;
+  cursor: pointer;
+}
+.close:hover {
+ width:20px;
+}
