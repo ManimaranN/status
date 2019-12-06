@@ -15,10 +15,11 @@ export default function Uploader() {
 
   //function for getting selected file and store it into the state selectedFile
 
-  const fileChangedHandler = event => {
-    console.log(event.target.files[0]);
+  const fileChangedHandler = () => {
+    var fileUpload = document.getElementById("files");
+    console.log(fileUpload.files[0]);
 
-    setSelectedFile(event.target.files[0]);
+    setSelectedFile(fileUpload.files[0]);
 
     let reader = new FileReader();
 
@@ -28,7 +29,49 @@ export default function Uploader() {
       setImagePreviewUrl(reader.result);
     };
 
-    reader.readAsDataURL(event.target.files[0]);
+    reader.readAsDataURL(fileUpload.files[0]);
+  };
+
+  const Upload = () => {
+    //Get reference of FileUpload.
+    var fileUpload = document.getElementById("files");
+
+    //Check whether the file is valid Image.
+    var regex = new RegExp("([a-zA-Z0-9s_\\.-:])+(.jpg|.png|.svg)$");
+    if (regex.test(fileUpload.value.toLowerCase())) {
+      //Check whether HTML5 is supported.
+      if (typeof fileUpload.files != "undefined") {
+        //Initiate the FileReader object.
+        var reader = new FileReader();
+        //Read the contents of Image File.
+        reader.readAsDataURL(fileUpload.files[0]);
+        reader.onload = function(e) {
+          //Initiate the JavaScript Image object.
+          var image = new Image();
+
+          //Set the Base64 string return from FileReader as source.
+          image.src = e.target.result;
+
+          //Validate the File Height and Width.
+          image.onload = function() {
+            var height = this.height;
+            var width = this.width;
+            if (height == 167 || width == 250) {
+              alert("Uploaded image has valid Height and Width.");
+              fileChangedHandler();
+              return true;
+            }
+            alert("Height and Width must not exceed the limit.");
+            return false;
+          };
+        };
+      } else {
+        return false;
+      }
+    } else {
+      alert("Please select a valid Image file.");
+      return false;
+    }
   };
 
   return (
@@ -46,7 +89,7 @@ export default function Uploader() {
             <input
               type="file"
               id="files"
-              onChange={fileChangedHandler}
+              onChange={Upload}
               style={{ display: "none" }}
             />
             <label for="files" className="custom-file-input" />
@@ -58,12 +101,7 @@ export default function Uploader() {
 
         {imagePreviewUrl ? (
           <div className="image-container">
-            <img
-              src={imagePreviewUrl}
-              alt="icon"
-              width="200"
-              accept="image/png, .jpeg, .jpg, image/gif"
-            />{" "}
+            <img src={imagePreviewUrl} alt="icon" width="200" />{" "}
           </div>
         ) : (
           ""

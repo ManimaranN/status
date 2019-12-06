@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <SizeSelector />
+        {/* <SizeSelector /> */}
         <Uploader />
         <StepExampleOrdered />
       </div>
