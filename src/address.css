@@ -1,0 +1,19 @@
+textarea:focus {
+  outline: none;
+}
+
+.location-search-input {
+  width: 50%;
+  height: 200px;
+  background-color: #caccd0;
+  border: none;
+  border-radius: 0.28571429rem;
+  padding: 10px;
+  margin: 50px 50px 50px 50px;
+
+  resize: none;
+}
+
+.choose_this_location:hover {
+  color: #764e96;
+}
